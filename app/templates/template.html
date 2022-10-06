@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="app-pane__toc">
+        <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading" data-module="collapsible-navigation">
+            {{toc|safe}}
+        </nav>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">Content</span>
+      {{page_content|safe}}
+    </div>
+  </div>  
+{% endblock %}
