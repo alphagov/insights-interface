@@ -35,10 +35,14 @@ def index():
     components = os.listdir("govuk_components")
     components.sort()
     content_dir = f'{ROOT_DIR}/app/content'
-    print(content_dir)
     print([page_.path for page_ in _get_pages(content_dir)])
+    return render_template("index.html", components=components, pages=_get_pages(content_dir))
 
-    return render_template("index.html", components=components)
+@app.route(f'/<requested_page>')
+def _render_page(requested_page):
+    for page_ in _get_pages(f'{ROOT_DIR}/app/content'):
+        if requested_page == page_.name:
+            return render_template('template.html', toc=page_.toc, page_content=page_.html)
 
 
 @app.route("/components/<string:component>")
