@@ -15,7 +15,7 @@ app.jinja_loader = ChoiceLoader(
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 
-csp = {
+"""csp = {
     "default-src": "'self'",
     "script-src": [
         "'self'",
@@ -25,6 +25,6 @@ csp = {
 }
 
 Compress(app)
-Talisman(app, content_security_policy=csp)
+Talisman(app, content_security_policy=csp)"""
 
 from app import routes  # noqa: E402, F401
