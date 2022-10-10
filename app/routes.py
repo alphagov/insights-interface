@@ -15,7 +15,9 @@ def index():
     components.sort()
     content_dir = f'{ROOT_DIR}/app/content'
     print([page_.path for page_ in utils._get_pages(content_dir)])
-    return render_template("index.html", components=components, pages=utils._get_pages(content_dir))
+    summary_page = [page_ for page_ in utils._get_pages(content_dir) if 'summary' in page_.path]
+
+    return render_template("index.html", components=components, pages=utils._get_pages(content_dir), summary=summary_page[0].render())
 
 @app.route(f'/<requested_page>')
 def _render_page(requested_page):
