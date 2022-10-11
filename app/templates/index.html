@@ -4,14 +4,24 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-three-quarters">
       <span class="govuk-caption-xl">Demonstration</span>
-      <h1 class="govuk-heading-xl">GOV.UK Frontend Jinja</h1>
-      <p class="govuk-body-l">This is a simple <a href="https://www.python.org/" class="govuk-link">Python</a> application using the <a href="https://flask.palletsprojects.com/en/1.1.x/" class="govuk-link">Flask</a> framework that demonstrates the <a href="https://jinja.palletsprojects.com/en/2.11.x/" class="govuk-link">Jinja</a> port of <a href="https://frontend.design-system.service.gov.uk/" class="govuk-link">GOV.UK Frontend</a>.</p>
-      <p class="govuk-body"><a href="https://github.com/LandRegistry/govuk-frontend-jinja" class="govuk-link">GOV.UK Frontend Jinja</a> provides a complete set of reusable component Jinja macros, directly ported from the GOV.UK Frontend Nunjucks macros.</p>
-      <p class="govuk-body">An automated test suite makes use of the GOV.UK Frontend <a href="https://frontend.design-system.service.gov.uk/testing-your-html/#test-if-your-html-matches-gov-uk-frontend" class="govuk-link">test fixtures</a> to ensure 100% compliant HTML is output. This currently covers a total of 564 test scenarios against every component, which you can see in the <a href="https://github.com/LandRegistry/govuk-frontend-jinja/actions" class="govuk-link">build status</a>.</p>
-      <p class="govuk-body">Every visual test fixture is rendered in the pages linked below, along with the Jinja macro options and HTML used to create them. These can be used as examples, or for visual regression testing.</p>
-      {{ govukInsetText({'html': 'If you also need to generate forms in your Python project, check out <a href="https://govuk-frontend-wtforms.herokuapp.com/" class="govuk-link">GOV.UK Frontend WTForms</a> which makes use of these Jinja macros.'} )}}
+      <h1 class="govuk-heading-xl">Insights Reporting Interface</h1>
+      <p class="govuk-body-l">Demonstration of a new potential interface through which Insights reporting content can be served.</p>
+      <p class="govuk-body">The interface utilises a series of technical tools to enable the curation (MarkDown), organisation (Flask, Python) and hosting (Google Cloud Run) of Insights reporting content in a browser-accessible interface.</p>
+      <p class="govuk-body">The demo utilises the GOV.UK design system to utilise the familiar look, feel, and accessibility features of GOV.UK.</p>
+
+      <h1 class="govuk-heading-l">Feedback sentiment over time</h1>
+      {% include 'sentiment_over_time_2022-10-11.html' %}
+      <p class="govuk-body">Some text around feedback sentiment</p>
+
+      <h1 class="govuk-heading-l">Feedback (bigram) topics over time</h1>
+      {% include 'GSDMM_topics_over_time_2022-10-11.html' %}
+      <p class="govuk-body">Some text around GSDMM topics over time</p>
+
+      <h1 class="govuk-heading-l">Feedback topics over time</h1>
+      {% include 'BERT_topics_over_time_2022-10-11.html' %}
+      <p class="govuk-body">Some text around BERT topics over time</p>
       
       <h2 class="govuk-heading-l">Contents</h2>
       <ul class="govuk-list govuk-list--bullet">
@@ -22,14 +32,6 @@
         {% endfor %}
       </ul>
 
-      <h2 class="govuk-heading-l">Components</h2>
-      <ul class="govuk-list govuk-list--bullet">
-        {% for component in components %}
-        <li>
-          <a class="govuk-link" href="{{ url_for('component', component=component) }}">{{component | replace("-", " ") | capitalize}}</a>
-        </li>
-        {% endfor %}
-      </ul>
     </div>
   </div>  
 {% endblock %}
